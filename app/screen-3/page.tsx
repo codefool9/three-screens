@@ -75,23 +75,18 @@ export default function Screen3() {
       {/* Content */}
       <div className="flex-1 px-5 py-5">
 
-        {/* Description */}
-        <p className="mb-5 text-sm leading-relaxed text-stone-600">{course.description}</p>
-
         {/* Progress bar */}
         <div className="mb-5 rounded-2xl bg-white p-4 border border-amber-100 shadow-sm">
           <div className="mb-2 flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-widest text-amber-700">Your Progress</p>
             <span className="text-xs font-semibold text-stone-500">0 / {course.lessons} lessons</span>
+            <span className="text-xs font-semibold text-amber-600">0%</span>
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-amber-100">
             <div className="h-full w-0 rounded-full bg-amber-500" />
           </div>
-          <p className="mt-1.5 text-[10px] text-stone-400">Start lesson 1 to begin tracking</p>
         </div>
 
         {/* Lesson list */}
-        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-700">What You&apos;ll Learn</p>
         <div className="mb-5 overflow-hidden rounded-2xl border border-amber-100 bg-white shadow-sm">
           {lessons.map((lesson, i) => (
             <div
@@ -120,18 +115,12 @@ export default function Screen3() {
           Start Course 🐾
         </button>
         {/* Specialist nudge */}
-        <div className="rounded-2xl border border-amber-200 bg-white px-4 py-3 flex items-center justify-between">
-          <div>
-            <p className="text-xs font-bold text-amber-900">Prefer hands-on help?</p>
-            <p className="text-[11px] text-stone-500">Find a local obedience trainer</p>
-          </div>
-          <Link href="/screen-2" className="flex items-center gap-1 text-xs font-semibold text-amber-600">
-            View
-            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </Link>
-        </div>
+        <Link href="/screen-2" className="rounded-2xl border border-amber-200 bg-white px-4 py-3 flex items-center justify-between">
+          <span className="text-xs font-semibold text-amber-900">🗺️ Find a local trainer</span>
+          <svg className="h-4 w-4 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </Link>
       </div>
 
     </div>

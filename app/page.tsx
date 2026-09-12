@@ -28,21 +28,15 @@ export default function Home() {
       </div>
 
       {/* ── VALUE PROPOSITION ── dominant element ──────────────── */}
-      <div className="px-5 pb-6">
-        <h1 className="mb-3 text-[32px] font-extrabold leading-tight tracking-tight text-amber-900">
-          Train your best<br />friend, step<br />by step.
+      <div className="px-5 pb-5">
+        <h1 className="text-[34px] font-extrabold leading-tight tracking-tight text-amber-900">
+          Train your<br />best friend.
         </h1>
-        <p className="text-[15px] leading-relaxed text-stone-600">
-          Simple, guided courses for new puppy owners — or connect with a local specialist near you.
-        </p>
       </div>
 
       {/* Hero illustration */}
       <div className="mx-5 mb-6 flex h-40 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-200 to-amber-300 shadow-inner">
-        <div className="text-center">
-          <div className="text-6xl">🐕</div>
-          <p className="mt-2 text-sm font-semibold text-amber-800">Your pup&apos;s journey starts here</p>
-        </div>
+        <div className="text-7xl">🐕</div>
       </div>
 
       {/* Primary CTA */}
@@ -66,7 +60,6 @@ export default function Home() {
 
       {/* Browse by goal */}
       <div className="px-5 pb-5">
-        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-700">Browse by Goal</p>
         <div className="grid grid-cols-4 gap-2">
           {categories.map((cat) => (
             <Link key={cat.label} href="/screen-2">
@@ -81,7 +74,6 @@ export default function Home() {
 
       {/* Popular courses */}
       <div className="px-5">
-        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-700">Popular Right Now</p>
         <div className="grid grid-cols-2 gap-3">
           {popularCourses.map((course) => (
             <Link key={course.title} href="/screen-3">
