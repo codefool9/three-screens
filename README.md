@@ -32,16 +32,16 @@
 ## 3. Feedback Questions
 
 **Need**
-1. "Tell me about the last time you tried to train your dog at home — what did you actually do?" — *Prediction: Most will describe a YouTube search that trailed off after a few attempts.*
+1. "Tell me about the last time you tried to train your dog at home — what did you actually do?" — *Prediction: Most will describe pulling up a YouTube video that trailed off after a session or two with no consistent follow-through. This rests on the Screen 1 category grid (Obedience, Tricks, Hunting, Agility): if they describe scattering across unrelated videos, that validates that the structured goal-based entry points on the landing screen close the gap the persona actually experiences.*
 
 **Value**
-2. "If you could say one or two words to describe what you would get out of an app like this, what would they be?" — *Prediction: Answers like 'structure,' 'consistency,' or 'knowing what to do next.'*
+2. "If you could say one or two words to describe what you would get out of an app like this, what would they be?" — *Prediction: Words like "structure," "consistency," or "knowing what to do next." This rests on the Screen 3 lesson list — eight numbered lessons with explicit titles and durations are designed to signal exactly those words. If they surface unprompted after seeing the screen, the lesson list is communicating the value correctly.*
 
 **Persona**
-3. "How often does training come up for you right now, and what are you usually doing when you try to work on it?" — *Prediction: Short sessions at home, often alone, phone in hand.*
+3. "How often does training come up for you right now, and what are you usually doing when you try to work on it?" — *Prediction: Short sessions at home, phone in hand, usually squeezed around another activity. This rests on the 10–25 minute lesson durations shown on Screen 3: if the persona describes fitting training into small gaps, those lengths match the behavior the prototype is already sized for — and if they say sessions run longer or shorter, it flags a mismatch to fix.*
 
 **Capability**
-4. "I am going to show you this screen for five seconds. (Hide it.) What does this product do?" — *Prediction: Most will say 'train your dog' or 'dog training courses' — a correct but shallow read. Testing whether the lesson structure on Screen 3 adds the 'guided' signal.*
+4. "I am going to show you this screen for five seconds. (Hide it.) What does this product do?" — *Prediction: Most will say "train your dog" or "dog training courses" — correct but shallow. This rests on Screen 1: the headline and "Start Training" CTA should produce the right answer instantly, but the "guided" and "step-by-step" signals may not land until Screen 3's lesson list is seen. A shallow answer here means the landing screen signals the topic but not the structure.*
 
 ---
 
@@ -70,7 +70,7 @@ Yes. Screen 2 has a "← Home" back button and the Home tab in the bottom nav. S
 
 The initial output gave equal visual weight to every element — the headline, image placeholder, CTAs, and feature list all competed at the same size and gray tone, so nothing signaled the primary capability at first glance. The fix was to make the headline the single dominant element (large, dark, no competing visual beside it) and push supporting content below.
 
-| | Initial commit (df7b69d) | Revised (dog-trainer-app branch) |
+| | [Initial commit (df7b69d)](https://github.com/codefool9/three-screens/commit/df7b69d1) | [Revised (PR #1)](https://github.com/codefool9/three-screens/pull/1) |
 |-|--------------------------|----------------------------------|
 | Landing | Generic gray placeholder with "[Your headline]" at the same visual weight as everything else | Oversized amber headline as sole dominant element; "Start Training" CTA directly below with nothing competing |
 | Screen 2 | 4 identical skeleton cards, no content, no grouping | 9 real courses with filterable tabs; specialist section separated by common-region label |
