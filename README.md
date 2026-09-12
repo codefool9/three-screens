@@ -13,7 +13,7 @@
 
 **Persona:** Got their first puppy in the last three months; no prior dog training experience; tries one-off YouTube videos but cannot follow through consistently; has a smartphone and uses it for everything; trains at home in short gaps — during lunch, after work, or before bed.
 
-**Capability:** Find and follow a structured training course for their puppy, at their own pace at home, with the option to contact a local specialist if they need hands-on help.
+**Capability:** Follow a structured, step-by-step training course for their puppy.
 
 **Fundamental Value:** Confidence — the owner feels like they are doing it right and can see their puppy actually responding to commands.
 
@@ -47,23 +47,35 @@
 
 ## 4. Design Justification & First Read
 
-**Landing screen signal:** The headline "Train your best friend, step by step" names the capability (training) and implies the value (structure → confidence) before the user reads anything else. The golden retriever illustration and amber palette reinforce the pet context immediately.
+**Affordance sentence:** "Follow a step-by-step training course to teach your puppy basic commands — or find a local specialist near you."
 
-**Grouping (Gestalt):**
-- *Proximity*: On Screen 2, course title, category badge, difficulty badge, and rating are grouped inside a single card — the user reads them as one unit.
-- *Similarity*: All course cards share the same card shape, border, and icon-left layout, so the list reads as one type of content rather than a mixed page.
-- *Common region*: The "Local Specialists" section on Screen 2 is visually separated from the course list by a full-width label, creating a clear region boundary between self-guided and expert-led paths.
+**Does the landing screen signal the primary capability and fundamental value at first glance, before reading?**
+Yes. The oversized headline "Train your best friend, step by step" names the capability (training) and signals the value (structure → confidence) in one phrase. The paw icon and amber palette communicate pet context before a word is read. The "Start Training" button directly below reinforces the primary action so no one needs to hunt for what to do next.
 
-**Navigation:** Every screen returns to Home — via the bottom nav "Home" tab, and via a "Home" text link in the headers of Screens 2 and 3.
+**Does every element on the landing screen earn its place, or does anything compete with the primary job?**
+The "Find a Local Trainer" button is the only secondary element and is visually subordinate — it uses an outline style and smaller text compared to the filled amber primary CTA. The category grid and two course preview cards both serve the primary job by giving users a fast on-ramp to browsing. Nothing on the landing screen is purely decorative.
 
-**Before / After:**
+**What information and actions belong together on each screen, and which Gestalt principle communicates that?**
+- *Screen 1 — Proximity*: The headline, supporting sentence, and "Start Training" CTA sit in a tight vertical stack with no unrelated elements between them, so the user reads them as one message before anything else.
+- *Screen 2 — Similarity + Common Region*: All course cards share the same shape, icon-left layout, and badge row, so the list reads as one type of content (*similarity*). The "Local Specialists" section sits below a full-width section label that creates a clear boundary between self-guided courses and expert-led options (*common region*).
+- *Screen 3 — Proximity + Continuation*: Each lesson row groups a step number, title, and duration in a single horizontal line — the eye reads them as one unit. The rows stack in a numbered sequence that signals a clear progression (*continuation*).
+
+**Do Screens 2 and 3 stay on mission?**
+Screen 2 stays on mission: every element is either a course to choose from or a specialist to contact — no off-topic content. Screen 3 stays on mission: the lesson list, progress bar, and "Start Course" CTA all serve the single goal of helping the user commit to and begin the course. The specialist nudge at the bottom is a one-line supporting element, not a distraction.
+
+**Can you return to the landing screen from everywhere?**
+Yes. Screen 2 has a "← Home" back button and the Home tab in the bottom nav. Screen 3 has a "← Courses" back button, a "Home" text link in the header, and the Home tab in the bottom nav.
+
+**What did the AI initially get wrong, skip, or oversimplify, and what did you change?**
+
+The initial output gave equal visual weight to every element — the headline, image placeholder, CTAs, and feature list all competed at the same size and gray tone, so nothing signaled the primary capability at first glance. The fix was to make the headline the single dominant element (large, dark, no competing visual beside it) and push supporting content below.
 
 | | Initial commit (df7b69d) | Revised (dog-trainer-app branch) |
 |-|--------------------------|----------------------------------|
-| Landing | Generic gray placeholder with "[Your headline]" | Amber palette, "Train your best friend, step by step," category grid, two preview course cards |
-| Screen 2 | 4 skeleton list cards with no content | 9 real courses, filterable by Obedience/Tricks/Hunting/Agility, with ratings and horizontal specialist cards |
-| Screen 3 | Skeleton image + lorem-style lines | Named 8-lesson course, progress bar, per-lesson duration, specialist nudge at bottom |
-| What changed and why | The initial output had equal visual weight on every element — nothing signaled the primary capability. Reorganized the landing screen so the headline is the single dominant element (oversized, no competing visual near it). Added course categories to group related content (Gestalt: similarity + proximity). |
+| Landing | Generic gray placeholder with "[Your headline]" at the same visual weight as everything else | Oversized amber headline as sole dominant element; "Start Training" CTA directly below with nothing competing |
+| Screen 2 | 4 identical skeleton cards, no content, no grouping | 9 real courses with filterable tabs; specialist section separated by common-region label |
+| Screen 3 | Unlabeled skeleton lines — no indication of a lesson structure | 8 named lessons with durations, progress bar, and numbered sequence that communicates a clear path |
+| Design reason | Equal weight meant no signaling — the landing screen communicated "app" but not "training courses" | Hierarchy and proximity grouping now make the capability legible before reading |
 
 ---
 
