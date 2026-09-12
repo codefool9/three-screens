@@ -15,25 +15,23 @@ const tabs = [
   },
   {
     href: '/screen-2',
-    label: 'Explore',
+    label: 'Courses',
     icon: (active: boolean) => (
-      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? '2.5' : '2'} strokeLinecap="round">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? '2.5' : '2'} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+        <line x1="9" y1="7" x2="15" y2="7" />
+        <line x1="9" y1="11" x2="15" y2="11" />
       </svg>
     ),
   },
   {
     href: '/screen-3',
-    label: 'Detail',
+    label: 'Lessons',
     icon: (active: boolean) => (
-      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? '2.5' : '2'} strokeLinecap="round">
-        <line x1="8" y1="6" x2="21" y2="6" />
-        <line x1="8" y1="12" x2="21" y2="12" />
-        <line x1="8" y1="18" x2="21" y2="18" />
-        <circle cx="3" cy="6" r="0.5" fill="currentColor" />
-        <circle cx="3" cy="12" r="0.5" fill="currentColor" />
-        <circle cx="3" cy="18" r="0.5" fill="currentColor" />
+      <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={active ? '2.5' : '2'} strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
   },
@@ -43,7 +41,7 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex shrink-0 items-stretch border-t border-gray-100 bg-white pb-safe">
+    <nav className="flex shrink-0 items-stretch border-t border-amber-200 bg-white pb-safe">
       {tabs.map((tab) => {
         const isActive = pathname === tab.href;
         return (
@@ -51,11 +49,11 @@ export default function BottomNav() {
             key={tab.href}
             href={tab.href}
             className={`flex flex-1 flex-col items-center justify-center gap-1 py-3 transition-colors ${
-              isActive ? 'text-gray-900' : 'text-gray-400 hover:text-gray-600'
+              isActive ? 'text-amber-600' : 'text-stone-400 hover:text-amber-500'
             }`}
           >
             {tab.icon(isActive)}
-            <span className={`text-[10px] font-medium ${isActive ? 'text-gray-900' : 'text-gray-400'}`}>
+            <span className={`text-[10px] font-semibold ${isActive ? 'text-amber-600' : 'text-stone-400'}`}>
               {tab.label}
             </span>
           </Link>

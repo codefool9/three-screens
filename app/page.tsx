@@ -1,73 +1,98 @@
 import Link from 'next/link';
 
+const categories = [
+  { label: 'Obedience', emoji: '🦴', color: 'bg-blue-100 text-blue-800' },
+  { label: 'Tricks',    emoji: '⭐', color: 'bg-purple-100 text-purple-800' },
+  { label: 'Hunting',   emoji: '🦆', color: 'bg-green-100 text-green-800' },
+  { label: 'Agility',   emoji: '🏃', color: 'bg-orange-100 text-orange-800' },
+];
+
+const popularCourses = [
+  { emoji: '🐶', title: 'Puppy Basics', tag: 'Obedience', level: 'Easy', weeks: 3 },
+  { emoji: '🦮', title: 'Leash Training', tag: 'Obedience', level: 'Medium', weeks: 4 },
+];
+
 export default function Home() {
   return (
-    <div className="flex flex-col px-5 pb-6 pt-8">
+    <div className="flex flex-col bg-amber-50 pb-6">
 
-      {/* App identity */}
-      <div className="mb-8 flex items-center gap-3">
-        <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gray-900">
-          <span className="text-lg font-bold text-white">A</span>
+      {/* App header */}
+      <div className="flex items-center justify-between px-5 pb-4 pt-5">
+        <div className="flex items-center gap-2">
+          <span className="text-2xl">🐾</span>
+          <span className="text-xl font-extrabold tracking-tight text-amber-900">PawSteps</span>
         </div>
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-gray-400">Welcome to</p>
-          <p className="text-base font-bold text-gray-900">[ App Name ]</p>
+        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-amber-200">
+          <span className="text-base">🧑</span>
         </div>
       </div>
 
-      {/* ── VALUE PROPOSITION ── dominant element ─────────────────── */}
-      <div className="mb-8 rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 p-6">
-        <p className="mb-2 text-[10px] uppercase tracking-widest text-gray-400">Core Value</p>
-        <h1 className="mb-3 text-2xl font-bold leading-tight text-gray-900">
-          [Your headline: the value at a glance]
+      {/* ── VALUE PROPOSITION ── dominant element ──────────────── */}
+      <div className="px-5 pb-6">
+        <h1 className="mb-3 text-[32px] font-extrabold leading-tight tracking-tight text-amber-900">
+          Train your best<br />friend, step<br />by step.
         </h1>
-        <p className="text-sm leading-relaxed text-gray-500">
-          [One or two sentences describing what the product does and why it matters to your persona.]
+        <p className="text-[15px] leading-relaxed text-stone-600">
+          Simple, guided courses for new puppy owners — or connect with a local specialist near you.
         </p>
       </div>
 
-      {/* Visual placeholder */}
-      <div className="mb-8 flex h-40 w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-100">
-        <svg className="h-10 w-10 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <circle cx="8.5" cy="8.5" r="1.5" />
-          <path d="M21 15l-5-5L5 21" />
-        </svg>
-        <span className="text-xs text-gray-400">[ Visual / Illustration ]</span>
+      {/* Hero illustration */}
+      <div className="mx-5 mb-6 flex h-40 items-center justify-center rounded-3xl bg-gradient-to-br from-amber-200 to-amber-300 shadow-inner">
+        <div className="text-center">
+          <div className="text-6xl">🐕</div>
+          <p className="mt-2 text-sm font-semibold text-amber-800">Your pup&apos;s journey starts here</p>
+        </div>
       </div>
 
-      {/* Primary CTA → Screen 2 */}
-      <Link href="/screen-2">
-        <div className="mb-3 flex w-full items-center justify-center gap-2 rounded-2xl bg-gray-900 py-4">
-          <span className="font-semibold text-white">Get Started</span>
-          <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
+      {/* Primary CTA */}
+      <div className="px-5 pb-3">
+        <Link href="/screen-2">
+          <div className="flex w-full items-center justify-center gap-2 rounded-2xl bg-amber-600 py-4 shadow-md active:bg-amber-700">
+            <span className="text-base font-bold text-white">Start Training</span>
+            <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </Link>
+      </div>
+
+      {/* Secondary CTA */}
+      <div className="px-5 pb-8">
+        <button className="w-full rounded-2xl border-2 border-amber-300 bg-amber-50 py-3 text-sm font-semibold text-amber-700">
+          Find a Local Trainer 🗺️
+        </button>
+      </div>
+
+      {/* Browse by goal */}
+      <div className="px-5 pb-5">
+        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-700">Browse by Goal</p>
+        <div className="grid grid-cols-4 gap-2">
+          {categories.map((cat) => (
+            <Link key={cat.label} href="/screen-2">
+              <div className="flex flex-col items-center gap-1.5 rounded-2xl bg-white px-2 py-3 shadow-sm border border-amber-100 active:bg-amber-50">
+                <span className="text-xl">{cat.emoji}</span>
+                <span className="text-[10px] font-semibold text-stone-600">{cat.label}</span>
+              </div>
+            </Link>
+          ))}
         </div>
-      </Link>
+      </div>
 
-      {/* Secondary CTA placeholder */}
-      <button className="mb-10 w-full rounded-2xl border border-gray-200 py-3.5">
-        <span className="text-sm text-gray-400">[ Secondary Action ]</span>
-      </button>
-
-      {/* Feature highlights */}
-      <div className="border-t border-gray-100 pt-6">
-        <p className="mb-4 text-[10px] uppercase tracking-widest text-gray-400">What you get</p>
-        <div className="space-y-3">
-          {[
-            'Feature one — explain the capability',
-            'Feature two — explain the capability',
-            'Feature three — explain the capability',
-          ].map((text, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gray-100">
-                <span className="text-xs font-bold text-gray-400">{i + 1}</span>
+      {/* Popular courses */}
+      <div className="px-5">
+        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-700">Popular Right Now</p>
+        <div className="grid grid-cols-2 gap-3">
+          {popularCourses.map((course) => (
+            <Link key={course.title} href="/screen-3">
+              <div className="rounded-2xl bg-white p-4 shadow-sm border border-amber-100 active:bg-amber-50">
+                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 text-2xl">
+                  {course.emoji}
+                </div>
+                <p className="mb-1 text-sm font-bold text-amber-900 leading-tight">{course.title}</p>
+                <p className="text-xs text-stone-500">{course.level} · {course.weeks} wks</p>
               </div>
-              <div className="flex-1">
-                <div className="h-3 w-full rounded-full bg-gray-100" />
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

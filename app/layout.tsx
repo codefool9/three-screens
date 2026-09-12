@@ -3,8 +3,8 @@ import './globals.css'
 import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
-  title: 'App Prototype',
-  description: 'Three-screen mobile app prototype',
+  title: 'PawSteps — Dog Training',
+  description: 'Step-by-step training courses and local specialist finder for new puppy owners.',
 }
 
 export default function RootLayout({
@@ -14,28 +14,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-gray-200 md:flex md:min-h-screen md:items-center md:justify-center md:py-10">
+      <body className="min-h-screen bg-amber-100 md:flex md:items-center md:justify-center md:py-10">
         {/* Phone frame on desktop, full-screen on mobile */}
-        <div className="flex w-full flex-col overflow-hidden bg-white md:h-[844px] md:w-[390px] md:rounded-[48px] md:shadow-2xl">
+        <div className="flex w-full flex-col overflow-hidden bg-amber-50 md:h-[844px] md:w-[390px] md:rounded-[48px] md:shadow-2xl">
 
           {/* Status Bar */}
-          <div className="flex h-10 shrink-0 items-center justify-between bg-white px-5">
-            <span className="text-sm font-semibold text-gray-900">9:41</span>
-            <div className="flex items-center gap-1.5 text-gray-700">
+          <div className="flex h-10 shrink-0 items-center justify-between bg-amber-50 px-5">
+            <span className="text-sm font-semibold text-amber-900">9:41</span>
+            <div className="flex items-center gap-1.5 text-amber-800">
               <span className="text-[11px] font-semibold">5G</span>
-              {/* Signal bars */}
               <div className="flex items-end gap-px" style={{ height: '12px' }}>
-                <div className="w-[3px] rounded-sm bg-gray-700" style={{ height: '40%' }} />
-                <div className="w-[3px] rounded-sm bg-gray-700" style={{ height: '55%' }} />
-                <div className="w-[3px] rounded-sm bg-gray-700" style={{ height: '75%' }} />
-                <div className="w-[3px] rounded-sm bg-gray-700" style={{ height: '100%' }} />
+                <div className="w-[3px] rounded-sm bg-amber-700" style={{ height: '40%' }} />
+                <div className="w-[3px] rounded-sm bg-amber-700" style={{ height: '55%' }} />
+                <div className="w-[3px] rounded-sm bg-amber-700" style={{ height: '75%' }} />
+                <div className="w-[3px] rounded-sm bg-amber-700" style={{ height: '100%' }} />
               </div>
-              {/* Battery */}
               <div className="flex items-center gap-px">
-                <div className="flex h-[12px] w-[22px] items-center rounded-[3px] border border-gray-700 px-[2px]">
-                  <div className="h-[7px] w-full rounded-[1px] bg-gray-700" />
+                <div className="flex h-[12px] w-[22px] items-center rounded-[3px] border border-amber-700 px-[2px]">
+                  <div className="h-[7px] w-full rounded-[1px] bg-amber-700" />
                 </div>
-                <div className="h-[5px] w-[2px] rounded-r-[1px] bg-gray-500" />
+                <div className="h-[5px] w-[2px] rounded-r-[1px] bg-amber-500" />
               </div>
             </div>
           </div>
