@@ -17,10 +17,26 @@ const courses = [
   { emoji: '🏃', title: 'Agility Foundations', category: 'Agility',   level: 'Medium',   weeks: 6, lessons: 10, rating: 4.7, reviews: 131 },
 ];
 
+// 12 specialists sorted by distance — covers every training field in the app
 const specialists = [
-  { name: 'Jake M.',  specialty: 'Obedience & Tricks', rating: 4.9, distance: '2.1 mi', emoji: '👨‍🏫' },
-  { name: 'Sarah T.', specialty: 'Hunting Dogs',       rating: 4.8, distance: '3.4 mi', emoji: '👩‍🏫' },
-  { name: 'Mike R.',  specialty: 'Agility',            rating: 4.7, distance: '5.2 mi', emoji: '👨‍🎓' },
+  { name: 'Linda K.',   specialty: 'Puppy Basics',           rating: 5.0, reviews: 203, distance: '0.8 mi', certified: true  },
+  { name: 'Rachel B.',  specialty: 'Puppy Socialization',    rating: 4.9, reviews: 178, distance: '1.2 mi', certified: true  },
+  { name: 'Carlos V.',  specialty: 'Obedience',              rating: 4.8, reviews: 157, distance: '1.5 mi', certified: true  },
+  { name: 'Jake M.',    specialty: 'Obedience & Tricks',     rating: 4.9, reviews: 128, distance: '2.1 mi', certified: true  },
+  { name: 'Priya S.',   specialty: 'Tricks & Agility',       rating: 4.8, reviews: 115, distance: '2.9 mi', certified: true  },
+  { name: 'Sarah T.',   specialty: 'Hunting Dogs',           rating: 4.8, reviews: 94,  distance: '3.4 mi', certified: true  },
+  { name: 'Maria C.',   specialty: 'Obedience & Agility',   rating: 4.8, reviews: 142, distance: '3.7 mi', certified: true  },
+  { name: 'Amy W.',     specialty: 'Therapy Dog Training',   rating: 4.9, reviews: 89,  distance: '4.1 mi', certified: true  },
+  { name: 'Mike R.',    specialty: 'Agility',                rating: 4.7, reviews: 76,  distance: '5.2 mi', certified: false },
+  { name: 'Tom H.',     specialty: 'Bird Dog & Hunting',     rating: 4.7, reviews: 62,  distance: '6.3 mi', certified: false },
+  { name: 'Derek N.',   specialty: 'Protection Training',    rating: 4.6, reviews: 44,  distance: '7.8 mi', certified: false },
+  { name: 'James O.',   specialty: 'Search & Rescue',        rating: 5.0, reviews: 37,  distance: '9.4 mi', certified: true  },
+];
+
+const avatarColors = [
+  'bg-amber-500', 'bg-rose-400',    'bg-blue-500',  'bg-amber-600',
+  'bg-purple-400','bg-green-500',   'bg-teal-500',  'bg-pink-400',
+  'bg-indigo-500','bg-orange-500',  'bg-slate-500', 'bg-emerald-500',
 ];
 
 const levelColors: Record<string, string> = {
@@ -42,6 +58,10 @@ function Stars({ rating }: { rating: number }) {
       {'★'.repeat(Math.round(rating))}{'☆'.repeat(5 - Math.round(rating))}
     </span>
   );
+}
+
+function Initials({ name }: { name: string }) {
+  return <>{name.split(' ').map(n => n[0]).join('')}</>;
 }
 
 export default function Screen2() {
@@ -73,7 +93,7 @@ export default function Screen2() {
 
       {/* Filter tabs */}
       <div className="shrink-0 border-b border-amber-200 bg-white px-5 py-3">
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+        <div className="flex gap-2 overflow-x-auto pb-1">
           {CATEGORIES.map((cat) => (
             <button
               key={cat}
@@ -100,13 +120,11 @@ export default function Screen2() {
           {filtered.map((course) => (
             <Link key={course.title} href="/screen-3">
               <div className="flex cursor-pointer items-center gap-4 rounded-2xl border border-amber-100 bg-white p-4 shadow-sm transition-colors active:bg-amber-50">
-                {/* Icon */}
                 <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-2xl">
                   {course.emoji}
                 </div>
-                {/* Info */}
                 <div className="min-w-0 flex-1">
-                  <p className="mb-1 text-sm font-bold text-amber-900 leading-tight">{course.title}</p>
+                  <p className="mb-1 text-sm font-bold leading-tight text-amber-900">{course.title}</p>
                   <div className="mb-1 flex flex-wrap gap-1">
                     <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${categoryColors[course.category]}`}>
                       {course.category}
@@ -123,7 +141,6 @@ export default function Screen2() {
                     <span className="text-[10px] text-stone-400">({course.reviews})</span>
                   </div>
                 </div>
-                {/* Chevron */}
                 <svg className="h-4 w-4 shrink-0 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                   <path d="M9 18l6-6-6-6" />
                 </svg>
@@ -132,23 +149,45 @@ export default function Screen2() {
           ))}
         </div>
 
-        {/* ── Local Specialists ──────────────────────────────────── */}
+        {/* ── Local Specialists ─────────────────────────────────── */}
         <div className="mt-8">
           <div className="mb-3 flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-widest text-amber-700">🗺️ Local Specialists</p>
-            <span className="text-xs font-medium text-amber-600">See all</span>
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-700">
+              🗺️ Local Specialists
+            </p>
+            <span className="text-xs font-medium text-amber-600">{specialists.length} near you</span>
           </div>
-          <div className="flex gap-3 overflow-x-auto pb-2">
-            {specialists.map((s) => (
-              <div key={s.name} className="shrink-0 w-36 rounded-2xl border border-amber-100 bg-white p-4 shadow-sm">
-                <div className="mb-2 text-2xl text-center">{s.emoji}</div>
-                <p className="text-xs font-bold text-amber-900 text-center leading-tight">{s.name}</p>
-                <p className="mb-2 text-[10px] text-stone-500 text-center">{s.specialty}</p>
-                <div className="flex items-center justify-center gap-1">
-                  <span className="text-amber-400 text-xs">★</span>
-                  <span className="text-[10px] font-semibold text-stone-600">{s.rating}</span>
-                  <span className="text-[10px] text-stone-400">· {s.distance}</span>
+          <div className="flex gap-3 overflow-x-auto pb-3">
+            {specialists.map((s, i) => (
+              <div
+                key={s.name}
+                className="shrink-0 w-40 rounded-2xl border border-amber-100 bg-white p-3 shadow-sm"
+              >
+                {/* Avatar + name row */}
+                <div className="mb-2 flex items-center gap-2">
+                  <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${avatarColors[i]} text-sm font-bold text-white`}>
+                    <Initials name={s.name} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="truncate text-xs font-bold leading-tight text-amber-900">{s.name}</p>
+                    {s.certified && (
+                      <p className="text-[9px] font-semibold text-blue-600">✓ Certified</p>
+                    )}
+                  </div>
                 </div>
+                {/* Specialty */}
+                <p className="mb-1.5 text-[10px] leading-tight text-stone-500">{s.specialty}</p>
+                {/* Rating + distance */}
+                <div className="mb-2 flex flex-wrap items-center gap-0.5">
+                  <span className="text-amber-400 text-[11px]">★</span>
+                  <span className="text-[10px] font-semibold text-stone-700">{s.rating}</span>
+                  <span className="text-[9px] text-stone-400"> ({s.reviews})</span>
+                  <span className="text-[9px] text-stone-400"> · {s.distance}</span>
+                </div>
+                {/* Contact button */}
+                <button className="w-full rounded-lg bg-amber-100 py-1 text-[10px] font-semibold text-amber-700 hover:bg-amber-200 transition-colors">
+                  Contact
+                </button>
               </div>
             ))}
           </div>
