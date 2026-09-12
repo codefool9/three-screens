@@ -1,86 +1,137 @@
 import Link from 'next/link';
 
+const course = {
+  emoji:       '🐶',
+  title:       'Puppy Basics',
+  category:    'Obedience',
+  level:       'Easy',
+  weeks:       3,
+  lessons:     8,
+  rating:      4.9,
+  reviews:     312,
+  ageNote:     'Ages 8 wks+',
+  description: 'The complete foundation every new puppy needs. Build a trusting bond and teach the commands that keep your dog safe and your home peaceful — one short session at a time.',
+};
+
+const lessons = [
+  { num: 1, title: 'Welcome & Bonding Time',     duration: '10 min' },
+  { num: 2, title: 'Name Recognition',           duration: '15 min' },
+  { num: 3, title: 'The Sit Command',            duration: '20 min' },
+  { num: 4, title: 'The Down Command',           duration: '20 min' },
+  { num: 5, title: 'The Stay Command',           duration: '25 min' },
+  { num: 6, title: 'Come When Called',           duration: '20 min' },
+  { num: 7, title: 'Leave It & Drop It',         duration: '25 min' },
+  { num: 8, title: 'Putting It All Together',    duration: '30 min' },
+];
+
+const totalMinutes = lessons.reduce((sum, l) => sum + parseInt(l.duration), 0);
+
 export default function Screen3() {
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="flex min-h-full flex-col bg-amber-50">
 
       {/* Header */}
-      <div className="flex shrink-0 items-center justify-between border-b border-gray-100 px-5 py-4">
-        <Link href="/screen-2" className="flex items-center gap-1.5 text-gray-500">
+      <div className="flex shrink-0 items-center justify-between border-b border-amber-200 bg-white px-5 py-4">
+        <Link href="/screen-2" className="flex items-center gap-1.5 text-amber-700">
           <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
-          <span className="text-sm">Back</span>
+          <span className="text-sm font-medium">Courses</span>
         </Link>
-        <h1 className="text-base font-semibold text-gray-900">[ Detail Title ]</h1>
-        <Link href="/" className="text-sm text-gray-500 underline underline-offset-2">
+        <h1 className="text-base font-extrabold text-amber-900">Course Detail</h1>
+        <Link href="/" className="text-sm font-semibold text-amber-600">
           Home
         </Link>
       </div>
 
-      {/* Hero image */}
-      <div className="shrink-0 px-5 pt-4">
-        <div className="flex h-44 w-full flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-gray-200 bg-gray-100">
-          <svg className="h-10 w-10 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="M21 15l-5-5L5 21" />
-          </svg>
-          <span className="text-xs text-gray-400">[ Image / Media ]</span>
+      {/* Hero */}
+      <div className="shrink-0 bg-gradient-to-br from-amber-300 to-amber-400 px-5 py-6 text-center">
+        <div className="mb-2 text-6xl">{course.emoji}</div>
+        <h2 className="text-2xl font-extrabold text-amber-900">{course.title}</h2>
+        <p className="mt-1 text-sm font-medium text-amber-800">
+          {course.lessons} lessons · {course.weeks} weeks · {totalMinutes} min total
+        </p>
+        {/* Rating */}
+        <div className="mt-2 flex items-center justify-center gap-1">
+          <span className="text-sm text-amber-500">{'★'.repeat(5)}</span>
+          <span className="text-sm font-bold text-amber-900">{course.rating}</span>
+          <span className="text-xs text-amber-700">({course.reviews} reviews)</span>
         </div>
       </div>
 
-      {/* Detail content */}
+      {/* Badges */}
+      <div className="shrink-0 flex gap-2 px-5 py-3 bg-white border-b border-amber-100">
+        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
+          🦴 {course.category}
+        </span>
+        <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+          ✅ {course.level}
+        </span>
+        <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
+          🐾 {course.ageNote}
+        </span>
+      </div>
+
+      {/* Content */}
       <div className="flex-1 px-5 py-5">
 
-        {/* Title */}
-        <div className="mb-4">
-          <div className="mb-2 h-5 w-48 rounded-full bg-gray-200" />
-          <div className="flex items-center gap-2">
-            <div className="h-3 w-20 rounded-full bg-gray-100" />
-            <span className="text-gray-300">·</span>
-            <div className="h-3 w-16 rounded-full bg-gray-100" />
+        {/* Description */}
+        <p className="mb-5 text-sm leading-relaxed text-stone-600">{course.description}</p>
+
+        {/* Progress bar */}
+        <div className="mb-5 rounded-2xl bg-white p-4 border border-amber-100 shadow-sm">
+          <div className="mb-2 flex items-center justify-between">
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-700">Your Progress</p>
+            <span className="text-xs font-semibold text-stone-500">0 / {course.lessons} lessons</span>
           </div>
-        </div>
-
-        {/* Tags */}
-        <div className="mb-5 flex gap-2">
-          {['Tag 1', 'Tag 2', 'Tag 3'].map((tag) => (
-            <div key={tag} className="rounded-full border border-dashed border-gray-300 bg-gray-100 px-3 py-1">
-              <span className="text-xs text-gray-400">{tag}</span>
-            </div>
-          ))}
-        </div>
-
-        {/* Description skeleton */}
-        <div className="mb-6">
-          <p className="mb-3 text-[10px] uppercase tracking-widest text-gray-400">Details</p>
-          <div className="space-y-2">
-            <div className="h-3 w-full rounded-full bg-gray-100" />
-            <div className="h-3 w-full rounded-full bg-gray-100" />
-            <div className="h-3 w-5/6 rounded-full bg-gray-100" />
-            <div className="h-3 w-full rounded-full bg-gray-100" />
-            <div className="h-3 w-3/4 rounded-full bg-gray-100" />
+          <div className="h-2 w-full overflow-hidden rounded-full bg-amber-100">
+            <div className="h-full w-0 rounded-full bg-amber-500" />
           </div>
+          <p className="mt-1.5 text-[10px] text-stone-400">Start lesson 1 to begin tracking</p>
         </div>
 
-        {/* Stats */}
-        <div className="mb-6 grid grid-cols-3 gap-3">
-          {['Stat 1', 'Stat 2', 'Stat 3'].map((s) => (
-            <div key={s} className="rounded-xl border border-dashed border-gray-200 bg-gray-50 p-3 text-center">
-              <div className="mx-auto mb-1 h-5 w-10 rounded bg-gray-200" />
-              <span className="text-[10px] text-gray-400">{s}</span>
+        {/* Lesson list */}
+        <p className="mb-3 text-xs font-bold uppercase tracking-widest text-amber-700">What You&apos;ll Learn</p>
+        <div className="mb-5 overflow-hidden rounded-2xl border border-amber-100 bg-white shadow-sm">
+          {lessons.map((lesson, i) => (
+            <div
+              key={lesson.num}
+              className={`flex items-center gap-4 px-4 py-3.5 ${
+                i < lessons.length - 1 ? 'border-b border-amber-50' : ''
+              }`}
+            >
+              {/* Step circle */}
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 border-amber-300 bg-amber-50">
+                <span className="text-[11px] font-bold text-amber-600">{lesson.num}</span>
+              </div>
+              {/* Title */}
+              <span className="flex-1 text-sm text-stone-700 leading-tight">{lesson.title}</span>
+              {/* Duration */}
+              <span className="shrink-0 text-[11px] font-medium text-stone-400">{lesson.duration}</span>
             </div>
           ))}
         </div>
 
       </div>
 
-      {/* Primary action */}
-      <div className="shrink-0 px-5 pb-5 pt-2">
-        <button className="w-full rounded-2xl bg-gray-900 py-4 text-center">
-          <span className="font-semibold text-white">[ Primary Action ]</span>
+      {/* Sticky CTA */}
+      <div className="shrink-0 px-5 pb-4 pt-3 bg-amber-50 border-t border-amber-200">
+        <button className="mb-3 w-full rounded-2xl bg-amber-600 py-4 font-bold text-white shadow-md active:bg-amber-700">
+          Start Course 🐾
         </button>
+        {/* Specialist nudge */}
+        <div className="rounded-2xl border border-amber-200 bg-white px-4 py-3 flex items-center justify-between">
+          <div>
+            <p className="text-xs font-bold text-amber-900">Prefer hands-on help?</p>
+            <p className="text-[11px] text-stone-500">Find a local obedience trainer</p>
+          </div>
+          <Link href="/screen-2" className="flex items-center gap-1 text-xs font-semibold text-amber-600">
+            View
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </Link>
+        </div>
       </div>
 
     </div>
